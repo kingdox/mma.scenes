@@ -7,15 +7,15 @@ using UnityEngine.SceneManagement;
 #endregion
 namespace MMA.Scenes
 {
-    public static class Key
+    public static partial class Key
     {
-        public const string AddScene = "SCENES_Add";
-        public const string RemoveScene = "SCENES_Remove";
-        public const string OnSceneRemoved = "SCENES_OnSceneRemoved";
-        public const string OnSceneAdded = "SCENES_OnSceneAdded";
+        public static string AddScene = "SCENES_Add";
+        public static string RemoveScene = "SCENES_Remove";
+        public static string OnSceneRemoved = "SCENES_OnSceneRemoved";
+        public static string OnSceneAdded = "SCENES_OnSceneAdded";
     }
 
-    public sealed class Scenes_Module : Module
+    public sealed partial class Scenes_Module : Module
     {
         #region References
         //[Header("Applications")]
