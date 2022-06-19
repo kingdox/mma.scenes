@@ -37,10 +37,10 @@ namespace MMA.Scenes
                 SceneManager.sceneUnloaded -= OnSceneRemoved;
             }
 
-            Middleware<string,      AsyncOperation>.Subscribe_Request(condition, Key.AddScene,      Request_AddAsyncScene);
-            Middleware<string[],    AsyncOperation>.Subscribe_Request(condition, Key.AddScene,      Request_AddAsyncScene);
-            Middleware<string,      AsyncOperation>.Subscribe_Request(condition, Key.RemoveScene,   Request_RemovesAsyncScene);
-            Middleware<string[],    AsyncOperation>.Subscribe_Request(condition, Key.RemoveScene,   Request_RemovesAsyncScene);
+            Middleware<string,      AsyncOperation>.Subscribe_IEnumerator(condition, Key.AddScene,      Request_AddAsyncScene);
+            Middleware<string[],    AsyncOperation>.Subscribe_IEnumerator(condition, Key.AddScene,      Request_AddAsyncScene);
+            Middleware<string,      AsyncOperation>.Subscribe_IEnumerator(condition, Key.RemoveScene,   Request_RemovesAsyncScene);
+            Middleware<string[],    AsyncOperation>.Subscribe_IEnumerator(condition, Key.RemoveScene,   Request_RemovesAsyncScene);
         }
         private void OnSceneAdded(Scene scene, LoadSceneMode mode)
         {
