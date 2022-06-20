@@ -37,10 +37,10 @@ namespace MMA.Scenes
                 SceneManager.sceneUnloaded -= OnSceneRemoved;
             }
 
-            Middleware<string,      AsyncOperation>.Subscribe_IEnumerator(condition, Key.AddScene,      Request_AddAsyncScene);
-            Middleware<string[],    AsyncOperation>.Subscribe_IEnumerator(condition, Key.AddScene,      Request_AddAsyncScene);
-            Middleware<string,      AsyncOperation>.Subscribe_IEnumerator(condition, Key.RemoveScene,   Request_RemovesAsyncScene);
-            Middleware<string[],    AsyncOperation>.Subscribe_IEnumerator(condition, Key.RemoveScene,   Request_RemovesAsyncScene);
+            Middleware<string>.Subscribe_IEnumerator(condition, Key.AddScene,      Request_AddAsyncScene);
+            Middleware<string[]>.Subscribe_IEnumerator(condition, Key.AddScene,      Request_AddAsyncScene);
+            Middleware<string>.Subscribe_IEnumerator(condition, Key.RemoveScene,   Request_RemovesAsyncScene);
+            Middleware<string[]>.Subscribe_IEnumerator(condition, Key.RemoveScene,   Request_RemovesAsyncScene);
         }
         private void OnSceneAdded(Scene scene, LoadSceneMode mode)
         {
@@ -70,22 +70,22 @@ namespace MMA.Scenes
         #endregion
         #region Request ( Coroutines )
         // Contenedor de toda la Esperas del Scenes
-        private IEnumerator<AsyncOperation> Request_AddAsyncScene(string name)
+        private IEnumerator Request_AddAsyncScene(string name)
         {
             yield return SceneManager.LoadSceneAsync(name, LoadSceneMode.Additive);
         }
 
-        private IEnumerator<AsyncOperation> Request_AddAsyncScene(string[] name)
+        private IEnumerator Request_AddAsyncScene(string[] name)
         {
             for (int i = 0; i < name.Length; i++) yield return SceneManager.LoadSceneAsync(name[i], LoadSceneMode.Additive);
         }
 
-        private IEnumerator<AsyncOperation> Request_RemovesAsyncScene(string name)
+        private IEnumerator Request_RemovesAsyncScene(string name)
         {
             yield return SceneManager.UnloadSceneAsync(name);
         }
 
-        private IEnumerator<AsyncOperation> Request_RemovesAsyncScene(string[] name)
+        private IEnumerator Request_RemovesAsyncScene(string[] name)
         {
             for (int i = 0; i < name.Length; i++) yield return SceneManager.UnloadSceneAsync(name[i]);
         }
