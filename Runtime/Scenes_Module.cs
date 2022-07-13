@@ -9,10 +9,10 @@ namespace MMA.Scenes
 {
     public static partial class Key
     {
-        public static string AddScene = "SCENES_Add";
-        public static string RemoveScene = "SCENES_Remove";
-        public static string OnSceneRemoved = "SCENES_OnSceneRemoved";
-        public static string OnSceneAdded = "SCENES_OnSceneAdded";
+        public static int AddScene = 0;
+        public static int RemoveScene = 1;
+        public static int OnSceneRemoved = 2;
+        public static int OnSceneAdded = 3;
     }
 
     public sealed partial class Scenes_Module : Module
