@@ -10,9 +10,9 @@ namespace MMA.Scenes
     public static partial class Key
     {
         public static int AddScene = 0;
-        public static int RemoveScene = 1;
-        public static int OnSceneRemoved = 2;
-        public static int OnSceneAdded = 3;
+        public static int RemoveScene = 0;
+        public static int OnSceneRemoved = 0;
+        public static int OnSceneAdded = 0;
     }
 
     public sealed partial class Scenes_Module : Module
@@ -37,7 +37,7 @@ namespace MMA.Scenes
                 SceneManager.sceneUnloaded -= OnSceneRemoved;
             }
 
-            Middleware<string>.Subscribe_IEnumerator(condition, Key.AddScene,      Request_AddAsyncScene);
+            Middleware<string>.Subscribe_IEnumerator(condition, Key.AddScene, Request_AddAsyncScene);
             Middleware<string[]>.Subscribe_IEnumerator(condition, Key.AddScene,      Request_AddAsyncScene);
             Middleware<string>.Subscribe_IEnumerator(condition, Key.RemoveScene,   Request_RemovesAsyncScene);
             Middleware<string[]>.Subscribe_IEnumerator(condition, Key.RemoveScene,   Request_RemovesAsyncScene);
